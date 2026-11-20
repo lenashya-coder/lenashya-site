@@ -1,0 +1,1456 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#181511">
+<meta name="theme-color" content="#241d22">
+<title>lenashya — бренд-дизайнер Лена Мыльникова</title>
+<meta name="description" content="Бренд-дизайн для бьюти-индустрии: упаковка, фирменный стиль, полиграфия.">
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<style>
+/* ===== Шрифты =====
+   Основной шрифт макета — Cera Pro (лицензионные файлы подключены).
+   Вес 600 отдан начертанию Medium: отдельного Semibold в наборе нет. */
+@font-face{font-family:'Cera Pro';font-weight:300;font-style:normal;font-display:swap;src:url(assets/fonts/cera-pro-300.woff2) format('woff2')}
+@font-face{font-family:'Cera Pro';font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/cera-pro-400.woff2) format('woff2')}
+@font-face{font-family:'Cera Pro';font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/cera-pro-500.woff2) format('woff2')}
+@font-face{font-family:'Cera Pro';font-weight:600;font-style:normal;font-display:swap;src:url(assets/fonts/cera-pro-500.woff2) format('woff2')}
+@font-face{font-family:'Manrope';font-weight:300;font-style:normal;font-display:swap;src:url(assets/fonts/manrope-300-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:300;font-style:normal;font-display:swap;src:url(assets/fonts/manrope-300-latin.woff2) format('woff2')}
+@font-face{font-family:'Manrope';font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/manrope-400-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/manrope-400-latin.woff2) format('woff2')}
+@font-face{font-family:'Manrope';font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/manrope-500-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/manrope-500-latin.woff2) format('woff2')}
+@font-face{font-family:'Manrope';font-weight:600;font-style:normal;font-display:swap;src:url(assets/fonts/manrope-600-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:600;font-style:normal;font-display:swap;src:url(assets/fonts/manrope-600-latin.woff2) format('woff2')}
+@font-face{font-family:'Kalissa';font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/KA.woff2) format('woff2')}
+
+:root{
+  --bg:#fcfaf7;
+  --ink:#2a1a16;
+  --ink-soft:#6b5c58;
+  --red:#ac2238;
+  --red-deep-1:#aa2137;
+  --red-deep-2:#5f0d1b;
+  --grad-red:linear-gradient(135deg,#aa2137 0%,#8c1a2c 45%,#5f0d1b 100%);
+  --blue:#a1c1e3;
+  --blue-btn:#c8daed;
+  --blue-weak:#e9f1fb;
+  --blue-card:#e5edf8;
+  --blue-word:#c7d9ec;
+  --sans:'Cera Pro','Manrope',-apple-system,'Segoe UI',sans-serif;
+  --script:'Kalissa',cursive;
+  --r-lg:30px;
+  --r-md:24px;
+  --r-sm:18px;
+  --wrap:1488px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  /* защита от копирования: текст нельзя выделить */
+  -webkit-user-select:none;user-select:none;
+}
+img{display:block;max-width:100%;-webkit-user-drag:none}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+em{font-style:normal}
+
+/* ===== Страницы (hash-роутинг) ===== */
+.pg{display:none}
+.pg.on{display:block;animation:pgin .45s ease both}
+@keyframes pgin{from{opacity:0;transform:translateY(14px)}}
+.page{padding-top:64px;padding-bottom:10px}
+.k{font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
+.pl{display:inline-block;background:var(--blue-weak);border-radius:999px;padding:8px 18px;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#41566f}
+
+/* ===== Шапка: светлая «стеклянная» таблетка ===== */
+.hd{position:sticky;top:16px;z-index:50;margin-top:16px}
+.hd-pill{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  background:rgba(255,255,255,.55);
+  -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 8px 28px rgba(95,13,27,.08);
+  border-radius:999px;
+  padding:12px 14px 12px 32px;
+}
+.hd-logo{flex:none;display:flex;align-items:center;line-height:0}
+.hd-logo img{height:26px;width:auto;display:block}
+.hd-logo .lg-light{display:none}
+.hd-nav{display:flex;align-items:center;gap:32px}
+.hd-nav a{
+  color:var(--ink);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  opacity:.78;transition:opacity .2s,color .2s;padding:8px 0;
+}
+.hd-nav a:hover{opacity:1;color:var(--red)}
+.hd-nav a.act{opacity:1;color:var(--red)}
+.hd-cta{
+  color:#fff;background:var(--grad-red);
+  border-radius:999px;padding:13px 24px;
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  transition:transform .2s, box-shadow .2s;white-space:nowrap;
+}
+.hd-cta:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(95,13,27,.4)}
+.hd-burger{display:none;color:var(--ink);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px}
+
+/* ===== Снег ===== */
+#snow{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
+
+/* мобильное меню */
+.mnav{
+  position:fixed;inset:0;z-index:60;background:var(--grad-red);
+  display:flex;flex-direction:column;justify-content:center;gap:8px;
+  padding:40px 32px;transform:translateY(-100%);transition:transform .35s ease;
+}
+.mnav.on{transform:none}
+.mnav a{color:#fff;font-size:28px;font-weight:500;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.mnav .mnav-x{position:absolute;top:22px;right:24px;color:#fff;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding:12px}
+
+/* ===== Первый экран ===== */
+.hero{
+  margin-top:56px;
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:54.5% 45.5%;
+  min-height:min(900px,calc(100vh - 140px));
+}
+.hero-txt{
+  background:var(--grad-red);
+  color:#fff;
+  padding:64px 48px 68px 70px;
+  display:flex;flex-direction:column;
+}
+.hero-logo{line-height:0}
+.hero-logo img{height:clamp(48px,4.4vw,84px);width:auto;display:block}
+.hero-pill{
+  margin-top:auto;
+  display:inline-block;max-width:max-content;
+  border:1px solid rgba(255,255,255,.38);
+  background:rgba(255,255,255,.1);
+  border-radius:999px;
+  padding:11px 22px;
+  font-size:13px;font-weight:400;color:rgba(255,255,255,.92);
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+.hero-h1{
+  margin-top:34px;
+  font-weight:300;
+  font-size:clamp(34px,3.5vw,62px);
+  line-height:1.16;
+  letter-spacing:.015em;
+}
+.hero-h1 .scr{font-family:var(--script);font-size:.95em;line-height:1;padding-left:.04em}
+.hero-sub{margin-top:34px;font-size:16px;font-weight:400;color:rgba(255,255,255,.85);max-width:46ch}
+.hero-btns{margin-top:44px;display:flex;gap:18px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:999px;padding:18px 36px;
+  font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  transition:transform .2s, box-shadow .2s, background-color .2s, color .2s;
+  white-space:nowrap;
+}
+.btn-blue{background:var(--blue-btn);color:var(--ink)}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(10,20,35,.28)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.75);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.hero-ph{position:relative;min-height:420px}
+.hero-ph picture{position:absolute;inset:0}
+.hero-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+
+/* ===== Новогодний блок с Люсьеном ===== */
+.ny{
+  position:relative;
+  margin-top:44px;
+  border-radius:var(--r-lg);
+  background:linear-gradient(118deg,#57647f 0%,#6c7a96 42%,#8b98b4 76%,#9faac5 100%);
+  display:flex;align-items:stretch;
+  overflow:hidden;
+  min-height:380px;
+  color:#fff;
+}
+.ny-txt{position:relative;z-index:2;flex:1 1 56%;padding:64px 20px 64px 68px;align-self:center}
+.ny-txt h2{
+  margin-top:0;
+  font-family:var(--script);font-weight:400;
+  font-size:clamp(44px,4.2vw,68px);line-height:1.08;color:#fff5e3;
+  text-shadow:0 4px 30px rgba(40,50,75,.35);
+}
+.ny-txt p{margin-top:22px;font-size:15.5px;color:rgba(255,255,255,.88);max-width:52ch}
+.ny-txt .ny-bold{margin-top:14px;font-weight:600;color:#ffe9c9;font-size:17px}
+.ny-img{position:relative;flex:1 1 44%;min-height:380px}
+.ny-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;
+  filter:drop-shadow(0 26px 40px rgba(30,8,10,.35));
+}
+.ny-dot{position:absolute;border-radius:50%;pointer-events:none;z-index:1}
+.ny-d1{width:120px;height:120px;right:40%;top:-40px;background:radial-gradient(circle at 32% 30%,#ffc37e,#f28a2e 62%,#d96f14);opacity:.9;filter:blur(1px)}
+.ny-d2{width:46px;height:46px;right:36%;bottom:52px;background:radial-gradient(circle at 32% 30%,#ffd9a8,#f2994a 65%,#e07b1f);opacity:.85}
+.ny-fl{position:absolute;color:rgba(255,255,255,.75);pointer-events:none;font-size:18px;animation:nyfl 5s ease-in-out infinite}
+.ny-f1{left:46%;top:18%}
+.ny-f2{left:52%;bottom:22%;font-size:13px;animation-delay:1.6s}
+.ny-f3{left:38%;top:56%;font-size:11px;animation-delay:2.8s}
+@keyframes nyfl{50%{transform:translateY(-8px);opacity:.4}}
+
+/* ===== Проекты ===== */
+.works-head{
+  margin-top:76px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.works-title{font-weight:300;font-size:clamp(38px,3.6vw,64px);line-height:1.05;color:var(--blue);text-transform:uppercase;letter-spacing:.04em}
+.works-title .scr{font-family:var(--script);text-transform:none;font-size:1.15em;letter-spacing:0}
+.works-nav{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-red{background:var(--grad-red);color:#fff;padding:16px 34px}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(95,13,27,.35)}
+.car-btn{
+  background:var(--blue);color:#fff;
+  border-radius:999px;padding:12px 26px;
+  font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  transition:opacity .2s, transform .2s;
+}
+.car-btn:hover{transform:translateY(-2px)}
+.car-btn[disabled]{opacity:.45;cursor:default;transform:none}
+
+/* ===== Профессиональные площадки ===== */
+.plat-head{margin-top:76px}
+.plat-grid{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.plat-card{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  background:#edf2fa;border-radius:24px;padding:76px 56px;
+  transition:transform .25s, box-shadow .25s;
+}
+.plat-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(95,13,27,.12)}
+.plat-card img{height:44px;width:auto;display:block}
+.plat-card img.plat-be{height:33px} /* в макете Behance ниже: 29 против 39 у Dprofile */
+.plat-btn{
+  flex:none;background:var(--grad-red);color:#fff;
+  border-radius:999px;padding:13px 28px;
+  font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  transition:transform .2s, box-shadow .2s;white-space:nowrap;
+}
+.plat-card:hover .plat-btn{transform:translateY(-1px);box-shadow:0 8px 22px rgba(95,13,27,.4)}
+@media (max-width:900px){
+  .plat-grid{grid-template-columns:1fr}
+  .plat-card{padding:40px 32px}
+}
+@media (max-width:560px){
+  .plat-head .works-title{font-size:29px}
+  .plat-card{padding:32px 24px;gap:16px}
+  .plat-card img{height:30px}
+  .plat-card img.plat-be{height:23px}
+  .plat-btn{padding:11px 20px;font-size:12px}
+}
+.works-track{
+  margin-top:48px;
+  display:flex;gap:34px;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  padding-bottom:6px;
+}
+.works-track::-webkit-scrollbar{display:none}
+.wcard{
+  flex:0 0 45%;
+  scroll-snap-align:start;
+  background:var(--blue-weak);
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .25s, box-shadow .25s;
+}
+.wcard:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(40,60,90,.14)}
+.wcard-cov{aspect-ratio:1296/800;overflow:hidden;position:relative}
+.wcard-cov img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.wcard:hover .wcard-cov img{transform:scale(1.04)}
+.wcard-info{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:30px 32px}
+.wcard-name{font-size:22px;font-weight:500;line-height:1.2}
+.wcard-tag{margin-top:6px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#8a7c78}
+.wcard-arr{
+  flex:none;width:54px;height:54px;border-radius:50%;
+  border:1.5px solid var(--red);color:var(--red);
+  display:grid;place-items:center;
+  transition:background-color .2s,color .2s;
+}
+.wcard:hover .wcard-arr{background:var(--red);color:#fff}
+.wcard-arr svg{width:20px;height:20px}
+
+/* ===== Соцсети ===== */
+.social{
+  margin-top:64px;
+  background:var(--blue-card);
+  border-radius:var(--r-lg);
+  padding:56px 70px;
+  display:grid;
+  grid-template-columns:minmax(240px,31%) 1fr;
+  gap:40px;
+  align-items:center;
+}
+.social-title{font-weight:300;font-size:clamp(34px,2.6vw,48px);line-height:1.1;text-transform:uppercase;letter-spacing:.03em}
+.social-title .scr{font-family:var(--script);text-transform:none;color:var(--red);font-size:1.12em}
+.social-note{margin-top:26px;font-size:15px;color:var(--ink-soft);max-width:24ch}
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.soc{
+  background:var(--grad-red);
+  border-radius:20px;
+  color:#fff;
+  padding:26px 30px;
+  display:flex;flex-direction:column;gap:10px;
+  min-height:132px;
+  transition:transform .2s, box-shadow .2s;
+}
+.soc:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(95,13,27,.35)}
+.soc-name{font-size:21px;font-weight:500}
+.soc-desc{font-size:14px;font-weight:400;color:rgba(255,255,255,.78)}
+.soc-link{
+  margin-top:auto;
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.soc-link svg{width:14px;height:14px;transition:transform .2s}
+.soc:hover .soc-link svg{transform:translateX(4px)}
+
+/* ===== CTA ===== */
+.cta{
+  margin-top:64px;
+  background:var(--grad-red);
+  border-radius:var(--r-lg);
+  color:#fff;
+  text-align:center;
+  padding:96px 40px 64px;
+}
+.cta-eyebrow{font-size:16px;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.cta-title{
+  margin-top:34px;
+  font-weight:300;
+  font-size:clamp(28px,2.4vw,45px);
+  line-height:1.18;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+}
+.cta-title .scr{font-family:var(--script);text-transform:none;color:var(--blue-word);font-size:1.22em;letter-spacing:0}
+.cta-sub{margin:34px auto 0;font-size:15px;font-weight:400;color:rgba(255,255,255,.88);max-width:none}
+.cta-btns{margin-top:52px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+/* ===== Подвал ===== */
+.ftr{
+  margin-top:100px;
+  background:linear-gradient(168deg,#a8c5e5 0%,#bfd3ec 42%,#e6eef9 100%);
+  overflow:hidden;
+}
+.ftr-giant{
+  display:block;
+  width:min(100%,1440px);
+  margin:0 auto clamp(20px,3vw,45px);
+  aspect-ratio:903/137;
+  overflow:hidden;
+  user-select:none;
+}
+.ftr-giant img{width:100%;height:auto;display:block;transform:translateY(-34%)}
+.ftr-cols{
+  position:relative;
+  display:grid;
+  grid-template-columns:42.4fr 16.6fr 24.7fr 16.3fr;
+  gap:24px;
+  padding:20px 0 240px;
+}
+.ftr-cap{font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7b8ba0;margin-bottom:20px}
+.ftr a{display:block;font-size:16px;font-weight:500;padding:7px 0;transition:opacity .2s}
+.ftr a:hover{opacity:.65}
+.ftr-legal{font-size:15px;line-height:1.6;max-width:38ch}
+.ftr-legal p+p{margin-top:18px}
+.ftr-req{font-size:15px;line-height:1.65}
+.ftr-req .ftr-pol{margin-top:26px}
+
+/* ===== Страница «Портфолио» ===== */
+.rlz{
+  margin-top:44px;
+  background:var(--blue-card);
+  border-radius:var(--r-lg);
+  display:grid;grid-template-columns:1.05fr 1fr;
+  overflow:hidden;
+  min-height:360px;
+}
+.rlz-img{position:relative;min-height:300px;display:block}
+.rlz-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.rlz:hover .rlz-img img{transform:scale(1.03)}
+.rlz-t{padding:56px 60px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.rlz-t h2{margin-top:20px;font-weight:300;font-size:clamp(28px,2.6vw,44px);line-height:1.12}
+.rlz-t p{margin-top:14px;font-size:15px;color:var(--ink-soft);max-width:44ch}
+.rlz-t .btn-red{margin-top:30px}
+.chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:64px}
+.chip{
+  border-radius:999px;background:var(--blue-weak);
+  padding:12px 24px;
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+  transition:background .2s,color .2s,transform .2s;
+}
+.chip:hover{transform:translateY(-1px)}
+.chip.on{background:var(--grad-red);color:#fff}
+.chip sup{opacity:.55;margin-left:5px;font-size:10px}
+.pf-grid{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.pf-card{
+  display:block;
+  background:var(--blue-weak);
+  border-radius:16px;overflow:hidden;cursor:pointer;
+  transition:transform .25s, box-shadow .25s;
+  position:relative;
+}
+.pf-card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(40,60,90,.14)}
+.pf-cov{aspect-ratio:1296/800;overflow:hidden;position:relative}
+.pf-cov img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.pf-card:hover .pf-cov img{transform:scale(1.04)}
+.pf-star{
+  position:absolute;top:16px;left:16px;z-index:2;
+  background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border-radius:999px;padding:8px 16px;
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red);
+}
+.pf-info{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:26px 30px}
+.pf-name{font-size:20px;font-weight:500;line-height:1.2}
+.pf-tag{margin-top:5px;font-size:11.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#8a7c78}
+.pf-arr{
+  flex:none;width:48px;height:48px;border-radius:50%;
+  border:1.5px solid var(--red);color:var(--red);
+  display:grid;place-items:center;transition:background-color .2s,color .2s;
+}
+.pf-card:hover .pf-arr{background:var(--red);color:#fff}
+.pf-arr svg{width:18px;height:18px}
+.pf-empty{margin-top:40px;color:var(--ink-soft);font-size:15px}
+
+/* ===== Страница проекта ===== */
+.pj-back{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  transition:color .2s;
+}
+.pj-back:hover{color:var(--red)}
+.pj-back svg{width:16px;height:16px;transform:rotate(180deg)}
+.pj-h{margin-top:30px;font-weight:300;font-size:clamp(32px,3.2vw,56px);line-height:1.1}
+.pj-pills{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+.pj-d{margin-top:26px;font-size:16px;color:var(--ink-soft);max-width:70ch;white-space:pre-line}
+.pj-g{margin-top:48px;display:flex;flex-direction:column}
+.pj-g figure{margin:0}
+.pj-g img{width:100%;display:block;background:var(--blue-weak)}
+.pj-nav{margin-top:64px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.pj-nl{
+  display:flex;flex-direction:column;gap:8px;max-width:46%;
+  background:var(--blue-weak);border-radius:18px;padding:24px 28px;
+  transition:transform .2s, box-shadow .2s;
+}
+.pj-nl:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(40,60,90,.12)}
+.pj-nl small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8a7c78;font-weight:600}
+.pj-nl b{font-size:17px;font-weight:500}
+.pj-nl.next{margin-left:auto;text-align:right}
+
+/* ===== Страница «Обо мне» ===== */
+.ab{margin-top:44px;display:grid;grid-template-columns:1fr minmax(360px,460px);gap:clamp(40px,5vw,90px);align-items:center}
+.ab-h{margin-top:20px;font-weight:300;font-size:clamp(40px,3.8vw,64px);line-height:1.08;text-transform:uppercase;letter-spacing:.03em;color:var(--ink)}
+.ab-h .scr{font-family:var(--script);text-transform:none;font-size:1.15em;color:var(--red);letter-spacing:0}
+.reg{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:13px}
+.reg li{position:relative;padding-left:30px;font-size:15.5px;font-weight:500;color:var(--ink)}
+.reg li::before{content:'✦';position:absolute;left:0;top:1px;color:var(--red);font-size:13px}
+.ab-t p{margin-top:28px;font-size:16.5px;color:var(--ink-soft);max-width:56ch}
+.ab-p{position:relative}
+.ab-p>img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r-lg)}
+.ab-badge{
+  position:absolute;left:-14px;bottom:44px;
+  background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:20px;padding:16px 24px;text-align:center;
+  box-shadow:0 16px 36px -18px rgba(90,13,26,.4);
+}
+.ab-badge b{display:block;font-size:32px;font-weight:500;color:var(--red);line-height:1}
+.ab-badge span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.rot{
+  position:absolute;right:-8px;top:-16px;width:118px;height:118px;color:var(--red);
+  background:#fffdf9;border-radius:50%;padding:8px;
+  box-shadow:0 14px 30px -14px rgba(90,13,26,.45);
+  animation:spin 18s linear infinite;
+}
+.rot svg{width:100%;height:100%;display:block}
+.rot text{font-size:10px;letter-spacing:.18em;fill:currentColor;font-family:var(--sans);font-weight:500}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* бегущая строка «Мне доверяют» */
+.mq{
+  margin-top:76px;
+  display:flex;align-items:center;gap:26px;
+  padding:16px 16px 16px 30px;
+  border-radius:999px;background:#fff;
+  border:1px solid #f0ece6;
+  box-shadow:0 10px 30px -18px rgba(90,13,26,.25);
+  overflow:hidden;
+}
+.mq .k{flex:none}
+.mqw{overflow:hidden;flex:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mqt{display:flex;gap:30px;width:max-content;animation:mqs 32s linear infinite}
+.mq:hover .mqt{animation-play-state:paused}
+.mqt b{font-weight:400;font-size:16.5px;white-space:nowrap;color:#5f0d1b;letter-spacing:.02em}
+.mqt i{font-style:normal;color:var(--blue);font-size:12px;align-self:center}
+@keyframes mqs{to{transform:translateX(-50%)}}
+
+/* ===== Страница «Услуги» ===== */
+.sv-lead{margin-top:24px;font-size:16px;color:var(--ink-soft);max-width:64ch}
+.sv-grid{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.sv-card{background:var(--blue-weak);border-radius:var(--r-md);padding:36px 34px;position:relative}
+.sv-num{font-weight:300;font-size:44px;line-height:1;color:var(--blue);letter-spacing:.02em}
+.sv-card h3{margin-top:14px;font-size:21px;font-weight:500}
+.sv-card ul{list-style:none;margin-top:22px}
+.sv-card li{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-top:1px solid rgba(65,86,111,.08)}
+.sv-card li:first-child{border-top:0}
+.sv-nm{font-size:14.5px;font-weight:500;line-height:1.35}
+.sv-nm small{display:block;margin-top:3px;font-size:12px;font-weight:400;color:#8a7c78;line-height:1.45}
+.sv-ld{flex:1;border-bottom:1.5px dotted rgba(65,86,111,.3);transform:translateY(-4px)}
+.sv-pr{flex:none;font-size:14.5px;font-weight:600;color:var(--red);white-space:nowrap}
+.sv-soon{margin-top:34px;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#8a7c78;text-align:center}
+/* выделенный блок «Нужной услуги нет в прайсе?» */
+.nosvc{
+  margin-top:56px;
+  background:var(--grad-red);
+  border-radius:var(--r-lg);
+  color:#fff;
+  padding:64px 70px;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
+  position:relative;overflow:hidden;
+}
+.nosvc::after{
+  content:'';position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);
+}
+.nosvc h2{font-weight:300;font-size:clamp(26px,2.4vw,40px);line-height:1.15}
+.nosvc h2 .scr{font-family:var(--script);text-transform:none;font-size:1.18em;color:var(--blue-word)}
+.nosvc p{margin-top:18px;font-size:15px;color:rgba(255,255,255,.88);max-width:58ch}
+.nosvc .btn-blue{position:relative;z-index:1}
+
+/* ===== Страница «Для будущих клиентов» ===== */
+/* этапы работы: таймлайн с авто-анимацией */
+.tl{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,2vw,30px);padding-top:52px;margin-top:60px}
+.tlb{position:absolute;left:0;right:0;top:11px;height:2px;background:rgba(172,34,56,.16)}
+.tlb i{position:absolute;left:0;top:0;height:100%;width:var(--p,0%);background:var(--grad-red);transition:width .8s cubic-bezier(.3,.7,.2,1)}
+.ti{position:relative;cursor:pointer;opacity:.5;transition:opacity .4s}
+.ti.on,.ti.done{opacity:1}
+.ti u{
+  position:absolute;top:-52px;left:0;width:24px;height:24px;border-radius:50%;
+  background:var(--bg);border:2px solid rgba(172,34,56,.35);transition:.4s;
+}
+.ti.on u,.ti.done u{background:var(--red);border-color:var(--red);box-shadow:0 0 0 6px rgba(172,34,56,.12)}
+.ti span{display:block;font-weight:300;font-size:44px;line-height:1;color:var(--red);margin-bottom:12px}
+.ti b{display:block;font-weight:500;font-size:17px;margin-bottom:6px}
+.ti p{font-size:13.5px;color:var(--ink-soft);line-height:1.55;max-width:240px}
+/* условия работы */
+.cond{margin-top:48px;display:grid;grid-template-columns:repeat(6,1fr);gap:26px}
+.cond .cd{
+  background:#fff;border:1px solid #f0ece6;border-radius:var(--r-md);
+  padding:34px 32px;
+  box-shadow:0 12px 32px -22px rgba(90,13,26,.25);
+  transition:transform .25s, box-shadow .25s;
+}
+.cond .cd:hover{transform:translateY(-3px);box-shadow:0 20px 44px -18px rgba(90,13,26,.35)}
+.cond .cd:nth-child(1){grid-column:span 2}
+.cond .cd:nth-child(2){grid-column:span 2}
+.cond .cd:nth-child(3){grid-column:span 2}
+.cond .cd:nth-child(4){grid-column:span 3}
+.cond .cd:nth-child(5){grid-column:span 3}
+.cd i{display:block;font-weight:300;font-size:34px;color:var(--blue);line-height:1;font-style:normal}
+.cd h4{margin-top:14px;font-size:19px;font-weight:500}
+.cd p{margin-top:12px;font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+#terms{scroll-margin-top:104px}
+.h-sub{margin-top:88px;font-weight:300;font-size:clamp(30px,3vw,48px);line-height:1.08;text-transform:uppercase;letter-spacing:.04em;color:var(--blue)}
+.h-sub .scr{font-family:var(--script);text-transform:none;font-size:1.15em;letter-spacing:0}
+
+/* ===== Политика конфиденциальности ===== */
+.pol{max-width:860px}
+.pol h1{font-weight:300;font-size:clamp(28px,2.6vw,44px);line-height:1.15;margin-top:20px}
+.pol h3{margin-top:44px;font-size:19px;font-weight:500}
+.pol p{margin-top:14px;font-size:14.5px;color:var(--ink-soft);line-height:1.7}
+
+/* ===== Полноэкранная галерея (лайтбокс) ===== */
+.glb{
+  position:fixed;inset:0;z-index:70;
+  background:rgba(16,9,12,.95);
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.glb.on{opacity:1;pointer-events:auto}
+.glb-stage{
+  position:absolute;inset:0;
+  display:grid;place-items:center;
+  padding:24px 24px 120px;
+  overflow:auto;
+}
+.glb-stage img{
+  max-width:100%;max-height:100%;
+  border-radius:10px;
+  transition:transform .3s ease;
+  cursor:zoom-in;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.glb.z .glb-stage{display:block;cursor:zoom-out}
+.glb.z .glb-stage img{max-width:none;max-height:none;width:auto;height:auto;min-width:100%;cursor:zoom-out;margin:0 auto}
+.glb-cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:20px 28px calc(20px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(0deg,rgba(10,5,8,.88),transparent);
+  color:#fff;pointer-events:none;
+}
+.glb-cat{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-word)}
+.glb-title{margin-top:6px;font-size:17px;font-weight:500}
+.glb-text{margin-top:4px;font-size:13.5px;color:rgba(255,255,255,.78);max-width:72ch}
+.glb-x,.glb-nav{
+  position:absolute;z-index:3;
+  width:50px;height:50px;border-radius:50%;
+  background:rgba(255,255,255,.14);color:#fff;
+  display:grid;place-items:center;
+  transition:background .2s,transform .2s;
+}
+.glb-x:hover,.glb-nav:hover{background:rgba(255,255,255,.3)}
+.glb-x{top:18px;right:18px;font-size:22px}
+.glb-nav{top:50%;transform:translateY(-50%);font-size:26px;line-height:1}
+.glb-prev{left:18px}
+.glb-next{right:18px}
+.glb-count{
+  position:absolute;top:30px;left:28px;z-index:3;
+  color:rgba(255,255,255,.85);font-size:13px;letter-spacing:.14em;font-weight:500;
+}
+@media (max-width:700px){
+  .glb-nav{width:44px;height:44px;font-size:22px}
+  .glb-prev{left:8px}.glb-next{right:8px}
+  .glb-stage{padding:12px 12px 140px}
+}
+
+/* ===== Cookie ===== */
+.ck{
+  position:fixed;left:18px;bottom:18px;z-index:55;
+  max-width:min(94vw,480px);
+  background:rgba(255,252,247,.92);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  border:1px solid #fff;
+  border-radius:26px;
+  box-shadow:0 24px 50px -22px rgba(90,13,26,.4);
+  padding:18px 20px;
+  display:grid;grid-template-columns:52px 1fr;gap:6px 14px;align-items:center;
+  animation:ckin .8s .8s both cubic-bezier(.2,.8,.2,1);
+}
+@keyframes ckin{from{opacity:0;transform:translateY(30px)}}
+.ck.off{display:none}
+.ckc{
+  flex:none;width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,#fbe9d6,#f1cfb0);
+  display:grid;place-items:center;font-size:26px;
+  animation:ckw 4s ease-in-out infinite;
+}
+@keyframes ckw{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.ckt{min-width:0}
+.ckt b{display:block;font-size:15px;font-weight:600}
+.ckt span{display:block;margin-top:4px;font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.ckt a{color:var(--red);text-decoration:underline;text-underline-offset:2px}
+.ckb{display:flex;gap:10px;grid-column:2;margin-top:6px}
+.ckb .p{
+  background:var(--grad-red);color:#fff;border-radius:999px;padding:11px 20px;
+  font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  transition:transform .2s, box-shadow .2s;
+}
+.ckb .p:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(95,13,27,.35)}
+.ckb .o{
+  border:1px solid rgba(42,26,22,.2);color:var(--ink);border-radius:999px;padding:11px 18px;
+  font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  transition:background .2s;
+}
+.ckb .o:hover{background:rgba(42,26,22,.06)}
+
+/* ===== Появление при скролле (только при работающем JS) ===== */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv{opacity:1;transform:none;transition:none}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* ===== Адаптив ===== */
+@media (max-width:1180px){
+  .hd-nav{display:none}
+  .hd-burger{display:block}
+  .hd-cta{display:none}
+  .social{grid-template-columns:1fr;padding:56px 40px}
+  .social-note{max-width:none}
+  .ftr-cols{grid-template-columns:1fr 1fr;padding-bottom:64px}
+  .ab{grid-template-columns:1fr;gap:70px}
+  .ab-p{max-width:480px;margin:0 auto;width:100%}
+  .sv-grid{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;padding-top:0;padding-left:52px;row-gap:34px}
+  .tlb{left:11px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .tlb i{width:100%;height:var(--p,0%);transition:height .8s}
+  .ti u{top:2px;left:-52px}
+  .ti span{font-size:32px;margin-bottom:8px}
+  .ti p{max-width:none}
+  .cond{grid-template-columns:1fr 1fr}
+  .cond .cd{grid-column:auto !important}
+  .rlz{grid-template-columns:1fr}
+  .rlz-img{min-height:300px}
+  .nosvc{grid-template-columns:minmax(0,1fr);padding:48px 36px}
+  .nosvc .btn-blue{min-width:0;white-space:normal;text-align:center;line-height:1.4}
+}
+@media (max-width:900px){
+  /* --- иммерсивный хиро: фото во весь экран, шапка поверх --- */
+  .hd{position:fixed;top:0;left:0;right:0;margin:0;padding-top:env(safe-area-inset-top,0)}
+  .hd-pill{
+    background:transparent;border-color:transparent;box-shadow:none;
+    -webkit-backdrop-filter:none;backdrop-filter:none;
+    transition:background .3s,border-color .3s,box-shadow .3s;
+  }
+  .hd-logo .lg-dark{display:none}
+  .hd-logo .lg-light{display:block}
+  .hd-burger{color:#fff}
+  .hd.hd-solid .hd-pill{
+    background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.7);
+    box-shadow:0 8px 28px rgba(95,13,27,.08);
+    -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
+  }
+  .hd.hd-solid .lg-dark{display:block}
+  .hd.hd-solid .lg-light{display:none}
+  .hd.hd-solid .hd-burger{color:var(--ink)}
+  /* на внутренних страницах шапка сразу стеклянная, контент ниже */
+  body[data-page]:not([data-page="home"]) .hd-pill{
+    background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.7);
+    box-shadow:0 8px 28px rgba(95,13,27,.08);
+    -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
+  }
+  body[data-page]:not([data-page="home"]) .hd-logo .lg-dark{display:block}
+  body[data-page]:not([data-page="home"]) .hd-logo .lg-light{display:none}
+  body[data-page]:not([data-page="home"]) .hd-burger{color:var(--ink)}
+  body[data-page]:not([data-page="home"]) main{padding-top:72px}
+
+  .hero{grid-template-columns:1fr;min-height:0;margin-top:0;border-radius:0;overflow:visible}
+  .hero-ph{order:-1;min-height:480px;height:100vh;height:100svh;margin:0 -24px;aspect-ratio:auto}
+  .hero-ph::before{ /* затемнение сверху под заголовок */
+    content:'';position:absolute;inset:0 0 auto;height:46%;z-index:1;
+    background:linear-gradient(180deg,rgba(20,12,16,.58),rgba(20,12,16,0));
+  }
+  .hero-txt{border-radius:28px 28px 30px 30px;margin-top:-28px;position:relative;padding:44px 28px 48px}
+  .hero-pill{margin-top:36px;font-size:12.5px;padding:10px 18px}
+  .hero-h1{font-size:clamp(27px,7.4vw,34px);margin-top:30px}
+  .wcard{flex-basis:82%}
+  .ny{flex-direction:column;min-height:0}
+  .ny-dot{display:none}
+  .ny-txt{padding:48px 28px 0;flex:none}
+  .ny-img{min-height:320px;flex:none}
+  .social-grid{grid-template-columns:1fr}
+  .cta{padding:72px 24px}
+  .pf-grid{grid-template-columns:1fr}
+  section[id]{scroll-margin-top:92px}
+  .page{padding-top:36px}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .hd-pill{padding:10px 10px 10px 22px}
+  .hero-ph{margin:0 -16px}
+  .hero-btns .btn{width:100%}
+  .works-head{flex-direction:column;align-items:flex-start}
+  .works-nav{width:100%;justify-content:space-between}
+  .works-nav .btn-red{order:-1;width:100%}
+  .car-btn{flex:1}
+  .wcard{flex-basis:88%}
+  .wcard-info{padding:20px 22px}
+  .wcard-name{font-size:18px}
+  .social{margin-top:44px;padding:40px 24px}
+  .cta-btns .btn{width:100%}
+  .ftr{margin-top:64px}
+  .ftr-cols{grid-template-columns:1fr;gap:32px;padding-bottom:48px}
+  .mq{gap:16px;padding:12px 12px 12px 20px}
+  .ab-badge{left:10px;bottom:20px;padding:12px 18px}
+  .ab-badge b{font-size:24px}
+  .rot{width:92px;height:92px;right:8px;top:-14px}
+  .cond{grid-template-columns:1fr}
+  .ck{left:10px;right:10px;bottom:10px;max-width:none;grid-template-columns:44px 1fr}
+  .ckc{width:44px;height:44px;font-size:22px}
+  .ckb{grid-column:1/-1;margin-top:10px}
+  .ckb .p,.ckb .o{flex:1;justify-content:center;text-align:center}
+  .sv-card{padding:28px 24px}
+  .rlz-t{padding:36px 24px}
+  .nosvc{padding:40px 24px}
+}
+</style>
+</head>
+<body data-page="home">
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<header class="hd">
+  <div class="wrap">
+    <div class="hd-pill">
+      <a class="hd-logo" href="#/" data-scroll="#top"><img class="lg-dark" src="assets/img/logo.svg" alt="lenashya — на главную"><img class="lg-light" src="assets/img/logo-white.svg" alt="" aria-hidden="true"></a>
+      <nav class="hd-nav" aria-label="Основная навигация">
+        <a href="#/portfolio" data-nav="portfolio">Портфолио</a>
+        <a href="#/coop" data-nav="coop">Сотрудничество</a>
+        <a href="#/" data-scroll="#contacts" data-nav="contacts">Контакты</a>
+      </nav>
+      <a class="hd-cta" href="https://t.me/lenashya" target="_blank" rel="noopener">Обсудить проект</a>
+      <button class="hd-burger" id="burger" aria-label="Открыть меню">Меню</button>
+    </div>
+  </div>
+</header>
+
+<div class="mnav" id="mnav" aria-hidden="true">
+  <button class="mnav-x" id="mnav-x">Закрыть</button>
+  <a href="#/" data-scroll="#top">Главная</a>
+  <a href="#/portfolio">Портфолио</a>
+  <a href="#/coop">Сотрудничество</a>
+  <a href="#/" data-scroll="#contacts">Контакты</a>
+</div>
+
+<main id="top">
+
+<!-- ================= ГЛАВНАЯ ================= -->
+<div class="pg on" id="pg-home">
+
+  <!-- Первый экран -->
+  <section class="wrap">
+    <div class="hero rv">
+      <div class="hero-txt">
+        <div class="hero-logo"><img src="assets/img/logo-white.svg" alt="lenashya"></div>
+        <span class="hero-pill">специализация: Beauty Industry / Индустрия красоты</span>
+        <h1 class="hero-h1">Графический дизайнер<br>бренд-дизайнер<br><em class="scr">lenashya</em></h1>
+        <p class="hero-sub">Фирменный стиль, бренд-стратегия, упаковка и полиграфия для желанных брендов</p>
+        <div class="hero-btns">
+          <a class="btn btn-blue" href="#/portfolio">Смотреть портфолио</a>
+          <a class="btn btn-ghost" href="#cta" data-scroll="#cta">Обсудить проект</a>
+        </div>
+      </div>
+      <div class="hero-ph">
+        <picture>
+          <source media="(max-width:900px)" srcset="assets/img/hero-mob.jpg">
+          <img src="assets/img/hero.jpg" alt="Лена Мыльникова за рабочим столом, на диване спит заяц Люсьен" fetchpriority="high">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- Новогоднее поздравление -->
+  <section class="wrap">
+    <div class="ny rv">
+      <span class="ny-dot ny-d1" aria-hidden="true"></span>
+      <span class="ny-dot ny-d2" aria-hidden="true"></span>
+      <span class="ny-fl ny-f1" aria-hidden="true">✦</span>
+      <span class="ny-fl ny-f2" aria-hidden="true">✦</span>
+      <span class="ny-fl ny-f3" aria-hidden="true">✦</span>
+      <div class="ny-txt">
+        <h2>Волшебству быть!</h2>
+        <p>Люсьен уже объелся мандаринов, устроился поудобнее и ждёт, когда на часах 31&nbsp;декабря наступит 00:00. Пусть в новом году всё задуманное случится&nbsp;— как по волшебству!</p>
+        <p class="ny-bold">С наступающим 2027 годом и Рождеством!</p>
+      </div>
+      <div class="ny-img">
+        <img src="assets/img/bunny-ny.webp" alt="Плюшевый заяц Люсьен в синем свитере довольно ест мандарин" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Избранные проекты -->
+  <section class="wrap" id="projects">
+    <div class="works-head rv">
+      <h2 class="works-title"><em class="scr">Избранные</em> проекты</h2>
+      <div class="works-nav">
+        <a class="btn btn-red" href="#/portfolio">Перейти в портфолио</a>
+        <button class="car-btn" id="car-next" type="button">Далее</button>
+        <button class="car-btn" id="car-prev" type="button" disabled>Назад</button>
+      </div>
+    </div>
+    <div class="works-track rv" id="track"></div>
+  </section>
+
+  <!-- Портфолио на профессиональных площадках -->
+  <section class="wrap" id="platforms">
+    <div class="plat-head rv">
+      <h2 class="works-title"><em class="scr">портфолио</em> на профессиональных площадках</h2>
+    </div>
+    <div class="plat-grid rv">
+      <a class="plat-card" href="https://dprofile.ru/lenashya" target="_blank" rel="noopener">
+        <img src="assets/img/dprofile.svg" alt="Dprofile">
+        <span class="plat-btn">Смотреть</span>
+      </a>
+      <a class="plat-card" href="https://www.behance.net/elenamylnikova" target="_blank" rel="noopener">
+        <img src="assets/img/behance.svg" alt="Behance" class="plat-be">
+        <span class="plat-btn">Смотреть</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Соцсети -->
+  <section class="wrap" id="contacts">
+    <div class="social rv">
+      <div>
+        <h2 class="social-title">Заходите<br><em class="scr">в гости</em></h2>
+        <p class="social-note">Работы, процесс, закулисье и&nbsp;новости:</p>
+      </div>
+      <div class="social-grid">
+        <a class="soc" href="https://t.me/lenashya" target="_blank" rel="noopener">
+          <span class="soc-name">Telegram</span>
+          <span class="soc-desc">@lenashya · телеграм-канал</span>
+          <span class="soc-link">Подписаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="soc" href="https://vk.ru/lenashya" target="_blank" rel="noopener">
+          <span class="soc-name">ВКонтакте</span>
+          <span class="soc-desc">vk.ru/lenashya · работы и кейсы</span>
+          <span class="soc-link">Открыть <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="soc" href="https://ru.pinterest.com/lenashya/" target="_blank" rel="noopener">
+          <span class="soc-name">Pinterest</span>
+          <span class="soc-desc">lenashya · больше работ</span>
+          <span class="soc-link">Смотреть <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="soc" href="https://instagram.com/lenashya" target="_blank" rel="noopener">
+          <span class="soc-name">Instagram*</span>
+          <span class="soc-desc">@lenashya</span>
+          <span class="soc-link">Подписаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="wrap" id="cta">
+    <div class="cta rv">
+      <div class="cta-eyebrow">Начнём проект?</div>
+      <h2 class="cta-title">Сделаем ваш бренд <em class="scr">желанным</em> в&nbsp;2027&nbsp;году?</h2>
+      <p class="cta-sub">Новый бренд или обновление уже существующего: бронируйте дату старта дизайн-проекта сейчас!</p>
+      <div class="cta-btns">
+        <a class="btn btn-blue" href="https://t.me/lenashya" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn btn-ghost" href="https://vk.ru/lenashya" target="_blank" rel="noopener">Написать ВКонтакте</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ================= ПОРТФОЛИО ================= -->
+<div class="pg" id="pg-portfolio">
+  <div class="wrap page">
+    <span class="k">Портфолио</span>
+    <h1 class="works-title" style="margin-top:20px"><em class="scr">все</em> мои работы</h1>
+    <a class="rlz rv" id="rlz" href="#"></a>
+    <div class="chips" id="chips"></div>
+    <div class="pf-grid" id="pf-grid"></div>
+    <p class="pf-empty" id="pf-empty" style="display:none">В этой категории пока нет работ — скоро появятся.</p>
+  </div>
+</div>
+
+<!-- ================= ПРОЕКТ ================= -->
+<div class="pg" id="pg-project">
+  <div class="wrap page" id="pj"></div>
+</div>
+
+<!-- ================= СОТРУДНИЧЕСТВО ================= -->
+<div class="pg" id="pg-coop">
+  <div class="wrap page">
+    <div class="ab">
+      <div class="ab-t rv">
+        <h3 class="ab-h">Лена <em class="scr">Мыльникова</em></h3>
+        <ul class="reg">
+          <li id="reg-exp">4+ года в дизайне</li>
+          <li>Бренд-дизайнер и графический дизайнер</li>
+          <li>Специализация — индустрия красоты</li>
+          <li>Каждый проект веду лично</li>
+        </ul>
+        <p>Забочусь о&nbsp;том, чтобы узнать бренд изнутри, понять, в&nbsp;чем заключается основная цель бизнеса, и&nbsp;определить, как наилучшим образом показать его миру с&nbsp;помощью визуала. Каждый проект я веду лично: от&nbsp;первого разговора до передачи финальных файлов.</p>
+      </div>
+      <div class="ab-p rv">
+        <img id="ab-img" src="assets/img/hero-mob.jpg" alt="Лена Мыльникова">
+        <div class="ab-badge"><b id="ab-exp">4+</b><span id="ab-expw">года в дизайне</span></div>
+        <div class="rot" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs><path id="cp" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+            <text><textPath href="#cp">BRAND DESIGNER • GRAPHIC DESIGNER • </textPath></text>
+            <circle cx="60" cy="60" r="4" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="mq rv" aria-label="Мне доверяют">
+      <span class="k">Мне доверяют</span>
+      <div class="mqw"><div class="mqt" id="mqt"></div></div>
+    </div>
+    <h2 class="h-sub">Услуги <em class="scr">и цены</em></h2>
+    <p class="sv-lead">Стоимость зависит от объёма и сложности задачи. Ниже ориентиры по каждому направлению, а точный расчёт я пришлю после короткого разговора.</p>
+    <div class="sv-grid" id="sv-grid"></div>
+    <p class="sv-soon" id="sv-soon"></p>
+    <div class="nosvc rv">
+      <div>
+        <h2>Нужной услуги <em class="scr">нет в прайсе?</em></h2>
+        <p>Если вашего запроса нет в&nbsp;прайсе, возможно, я&nbsp;с&nbsp;ним не&nbsp;работаю на&nbsp;постоянной основе. Но&nbsp;я&nbsp;всегда открыта к&nbsp;новым проектам&nbsp;— напишите мне, обсудим проект, и&nbsp;я&nbsp;подскажу, смогу&nbsp;ли взять его в&nbsp;работу, и&nbsp;сформирую индивидуальное предложение.</p>
+      </div>
+      <a class="btn btn-blue" href="#/coop" data-scroll="#terms">Узнать условия сотрудничества</a>
+    </div>
+    <h2 class="h-sub">Этапы <em class="scr">работы</em></h2>
+    <div class="tl" id="tl">
+      <div class="tlb"><i id="tlf"></i></div>
+      <div class="ti on"><u></u><span>01</span><b>Знакомство</b><p>Обсуждаем задачу, сроки и стоимость</p></div>
+      <div class="ti"><u></u><span>02</span><b>Материалы</b><p>Вы присылаете референсы, тексты и фото</p></div>
+      <div class="ti"><u></u><span>03</span><b>Концепция</b><p>Показываю идею и визуальные решения</p></div>
+      <div class="ti"><u></u><span>04</span><b>Доработка</b><p>Вносим правки и доводим до результата</p></div>
+      <div class="ti"><u></u><span>05</span><b>Готово</b><p>Файлы для печати и соцсетей</p></div>
+    </div>
+
+    <h2 class="h-sub" id="terms">Условия <em class="scr">работы</em></h2>
+    <div class="cond">
+      <div class="cd rv"><i>01</i><h4>Бронь даты</h4><p>Напишите мне, и я сообщу ближайшие свободные даты для начала проекта. После обсуждения деталей и согласования стоимости для бронирования даты вносится оплата в размере 25% от общей стоимости проекта.</p></div>
+      <div class="cd rv"><i>02</i><h4>Оплата</h4><p>Оставшиеся 75% оплачиваются после согласования готового проекта, но до передачи финальных файлов. Готовые материалы передаются после внесения полной оплаты.</p></div>
+      <div class="cd rv"><i>03</i><h4>Сроки</h4><p>Сроки разработки вашего дизайна зависят от&nbsp;сложности, занятости и&nbsp;времени на&nbsp;согласование, но&nbsp;я&nbsp;стараюсь предоставлять готовые работы в&nbsp;течение 2–21 рабочих дней.</p></div>
+      <div class="cd rv"><i>04</i><h4>Скидки</h4><p>Скидки могут быть доступны в&nbsp;зависимости от&nbsp;сезона и&nbsp;объема заказа. Если вы&nbsp;планируете заказ нескольких дизайн-проектов, объемных презентаций, обязательно сообщите мне, и&nbsp;я&nbsp;предложу вам индивидуальные условия (коммерческое предложение).</p></div>
+      <div class="cd rv"><i>05</i><h4>Срочные задачи</h4><p>Возможность выполнения срочного заказа обсуждается индивидуально. Стоимость может отличаться от стандартной.</p></div>
+    </div>
+
+    <div class="cta rv" style="margin-top:76px">
+      <div class="cta-eyebrow">Готовы начать?</div>
+      <h2 class="cta-title">Забронируйте <em class="scr">дату</em> старта проекта</h2>
+      <p class="cta-sub">Напишите мне — сообщу ближайшие свободные даты и отвечу на все вопросы.</p>
+      <div class="cta-btns">
+        <a class="btn btn-blue" href="https://t.me/lenashya" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn btn-ghost" href="https://vk.ru/lenashya" target="_blank" rel="noopener">Написать ВКонтакте</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ПОЛИТИКА ================= -->
+<div class="pg" id="pg-personal">
+  <div class="wrap page pol" id="pol"><h1>Политика в отношении обработки персональных данных</h1><h3>1. Общие положения</h3><p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006. № 152-ФЗ «О персональных данных» (далее — Закон о персональных данных) и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые Мыльниковой Еленой Анатольевной (Регистрационный номер оператора в реестре РКН 54-25-050 952) (далее — Оператор).</p><p>1.1. Оператор ставит своей важнейшей целью и условием осуществления своей деятельности соблюдение прав и свобод человека и гражданина при обработке его персональных данных, в том числе защиты прав на неприкосновенность частной жизни, личную и семейную тайну.</p><p>1.2. Настоящая политика Оператора в отношении обработки персональных данных (далее — Политика) применяется ко всей информации, которую Оператор может получить о посетителях веб-сайта www.lenashya.ru</p><h3>2. Основные понятия, используемые в Политике</h3><p>2.1. Автоматизированная обработка персональных данных — обработка персональных данных с помощью средств вычислительной техники.</p><p>2.2. Блокирование персональных данных — временное прекращение обработки персональных данных (за исключением случаев, если обработка необходима для уточнения персональных данных).</p><p>2.3. Веб-сайт — совокупность графических и информационных материалов, а также программ для ЭВМ и баз данных, обеспечивающих их доступность в сети интернет по сетевому адресу www.lenashya.ru</p><p>2.4. Информационная система персональных данных — совокупность содержащихся в базах данных персональных данных и обеспечивающих их обработку информационных технологий и технических средств.</p><p>2.5. Обезличивание персональных данных — действия, в результате которых невозможно определить без использования дополнительной информации принадлежность персональных данных конкретному Пользователю или иному субъекту персональных данных.</p><p>2.6. Обработка персональных данных — любое действие (операция) или совокупность действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных.</p><p>2.7. Оператор — государственный орган, муниципальный орган, юридическое или физическое лицо, самостоятельно или совместно с другими лицами организующие и/или осуществляющие обработку персональных данных, а также определяющие цели обработки персональных данных, состав персональных данных, подлежащих обработке, действия (операции), совершаемые с персональными данными.</p><p>2.8. Персональные данные — любая информация, относящаяся прямо или косвенно к определенному или определяемому Пользователю веб-сайта www.lenashya.ru</p><p>2.9. Персональные данные, разрешенные субъектом персональных данных для распространения, — персональные данные, доступ неограниченного круга лиц к которым предоставлен субъектом персональных данных путем дачи согласия на обработку персональных данных, разрешенных субъектом персональных данных для распространения в порядке, предусмотренном Законом о персональных данных (далее — персональные данные, разрешенные для распространения).</p><p>2.10. Пользователь — любой посетитель веб-сайта www.lenashya.ru</p><p>2.11. Предоставление персональных данных — действия, направленные на раскрытие персональных данных определенному лицу или определенному кругу лиц.</p><p>2.12. Распространение персональных данных — любые действия, направленные на раскрытие персональных данных неопределенному кругу лиц (передача персональных данных) или на ознакомление с персональными данными неограниченного круга лиц, в том числе обнародование персональных данных в средствах массовой информации, размещение в информационно-телекоммуникационных сетях или предоставление доступа к персональным данным каким-либо иным способом.</p><p>2.13. Трансграничная передача персональных данных — передача персональных данных на территорию иностранного государства органу власти иностранного государства, иностранному физическому или иностранному юридическому лицу.</p><p>2.14. Уничтожение персональных данных — любые действия, в результате которых персональные данные уничтожаются безвозвратно с невозможностью дальнейшего восстановления содержания персональных данных в информационной системе персональных данных и/или уничтожаются материальные носители персональных данных.</p><h3>3. Основные права и обязанности Оператора</h3><p>3.1. Оператор имеет право:</p><p>— получать от субъекта персональных данных достоверные информацию и/или документы, содержащие персональные данные;</p><p>— в случае отзыва субъектом персональных данных согласия на обработку персональных данных, а также, направления обращения с требованием о прекращении обработки персональных данных, Оператор вправе продолжить обработку персональных данных без согласия субъекта персональных данных при наличии оснований, указанных в Законе о персональных данных;</p><p>— самостоятельно определять состав и перечень мер, необходимых и достаточных для обеспечения выполнения обязанностей, предусмотренных Законом о персональных данных и принятыми в соответствии с ним нормативными правовыми актами, если иное не предусмотрено Законом о персональных данных или другими федеральными законами.</p><p>3.2. Оператор обязан:</p><p>— предоставлять субъекту персональных данных по его просьбе информацию, касающуюся обработки его персональных данных;</p><p>— организовывать обработку персональных данных в порядке, установленном действующим законодательством РФ;</p><p>— отвечать на обращения и запросы субъектов персональных данных и их законных представителей в соответствии с требованиями Закона о персональных данных;</p><p>— сообщать в уполномоченный орган по защите прав субъектов персональных данных по запросу этого органа необходимую информацию в течение 10 дней с даты получения такого запроса;</p><p>— публиковать или иным образом обеспечивать неограниченный доступ к настоящей Политике в отношении обработки персональных данных;</p><p>— принимать правовые, организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа к ним, уничтожения, изменения, блокирования, копирования, предоставления, распространения персональных данных, а также от иных неправомерных действий в отношении персональных данных;</p><p>— прекратить передачу (распространение, предоставление, доступ) персональных данных, прекратить обработку и уничтожить персональные данные в порядке и случаях, предусмотренных Законом о персональных данных;</p><p>— исполнять иные обязанности, предусмотренные Законом о персональных данных.</p><h3>4. Основные права и обязанности субъектов персональных данных</h3><p>4.1. Субъекты персональных данных имеют право:</p><p>— получать информацию, касающуюся обработки его персональных данных, за исключением случаев, предусмотренных федеральными законами. Сведения предоставляются субъекту персональных данных Оператором в доступной форме, и в них не должны содержаться персональные данные, относящиеся к другим субъектам персональных данных, за исключением случаев, когда имеются законные основания для раскрытия таких персональных данных. Перечень информации и порядок ее получения установлен Законом о персональных данных;</p><p>— требовать от оператора уточнения его персональных данных, их блокирования или уничтожения в случае, если персональные данные являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для заявленной цели обработки, а также принимать предусмотренные законом меры по защите своих прав;</p><p>— выдвигать условие предварительного согласия при обработке персональных данных в целях продвижения на рынке товаров, работ и услуг;</p><p>— на отзыв согласия на обработку персональных данных, а также, на направление требования о прекращении обработки персональных данных;</p><p>— обжаловать в уполномоченный орган по защите прав субъектов персональных данных или в судебном порядке неправомерные действия или бездействие Оператора при обработке его персональных данных;</p><p>— на осуществление иных прав, предусмотренных законодательством РФ.</p><p>4.2. Субъекты персональных данных обязаны:</p><p>— предоставлять Оператору достоверные данные о себе;</p><p>— сообщать Оператору об уточнении (обновлении, изменении) своих персональных данных.</p><p>4.3. Лица, передавшие Оператору недостоверные сведения о себе, либо сведения о другом субъекте персональных данных без согласия последнего, несут ответственность в соответствии с законодательством РФ.</p><h3>5. Принципы обработки персональных данных</h3><p>5.1. Обработка персональных данных осуществляется на законной и справедливой основе.</p><p>5.2. Обработка персональных данных ограничивается достижением конкретных, заранее определенных и законных целей. Не допускается обработка персональных данных, несовместимая с целями сбора персональных данных.</p><p>5.3. Не допускается объединение баз данных, содержащих персональные данные, обработка которых осуществляется в целях, несовместимых между собой.</p><p>5.4. Обработке подлежат только персональные данные, которые отвечают целям их обработки.</p><p>5.5. Содержание и объем обрабатываемых персональных данных соответствуют заявленным целям обработки. Не допускается избыточность обрабатываемых персональных данных по отношению к заявленным целям их обработки.</p><p>5.6. При обработке персональных данных обеспечивается точность персональных данных, их достаточность, а в необходимых случаях и актуальность по отношению к целям обработки персональных данных. Оператор принимает необходимые меры и/или обеспечивает их принятие по удалению или уточнению неполных или неточных данных.</p><p>5.7. Хранение персональных данных осуществляется в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки персональных данных, если срок хранения персональных данных не установлен федеральным законом, договором, стороной которого, выгодоприобретателем или поручителем по которому является субъект персональных данных. Обрабатываемые персональные данные уничтожаются либо обезличиваются по достижении целей обработки или в случае утраты необходимости в достижении этих целей, если иное не предусмотрено федеральным законом.</p><h3>6. Цели обработки персональных данных</h3><p>Цель обработки: продвижение товаров, работ, услуг на рынке</p><p>Персональные данные: фамилия, имя, отчество, пол, номер телефона, фото-видео изображение лица;</p><p>Правовые основания: Федеральный закон «Об информации, информационных технологиях и о защите информации» от 27.07.2006 N 149-ФЗ</p><p>Виды обработки персональных данных: Сбор, Систематизация, Хранение, Использование, Удаление;</p><h3>7. Условия обработки персональных данных</h3><p>7.1. Обработка персональных данных осуществляется с согласия субъекта персональных данных на обработку его персональных данных.</p><p>7.2. Обработка персональных данных необходима для достижения целей, предусмотренных международным договором Российской Федерации или законом, для осуществления возложенных законодательством Российской Федерации на оператора функций, полномочий и обязанностей.</p><p>7.3. Обработка персональных данных необходима для осуществления правосудия, исполнения судебного акта, акта другого органа или должностного лица, подлежащих исполнению в соответствии с законодательством Российской Федерации об исполнительном производстве.</p><p>7.4. Обработка персональных данных необходима для исполнения договора, стороной которого либо выгодоприобретателем или поручителем по которому является субъект персональных данных, а также для заключения договора по инициативе субъекта персональных данных или договора, по которому субъект персональных данных будет являться выгодоприобретателем или поручителем.</p><p>7.5. Обработка персональных данных необходима для осуществления прав и законных интересов оператора или третьих лиц либо для достижения общественно значимых целей при условии, что при этом не нарушаются права и свободы субъекта персональных данных.</p><p>7.6. Осуществляется обработка персональных данных, доступ неограниченного круга лиц к которым предоставлен субъектом персональных данных либо по его просьбе (далее — общедоступные персональные данные).</p><p>7.7. Осуществляется обработка персональных данных, подлежащих опубликованию или обязательному раскрытию в соответствии с федеральным законом.</p><h3>8. Порядок сбора, хранения, передачи и других видов обработки персональных данных</h3><p>Безопасность персональных данных, которые обрабатываются Оператором, обеспечивается путем реализации правовых, организационных и технических мер, необходимых для выполнения в полном объеме требований действующего законодательства в области защиты персональных данных.</p><p>8.1. Оператор обеспечивает сохранность персональных данных и принимает все возможные меры, исключающие доступ к персональным данным неуполномоченных лиц.</p><p>8.2. Персональные данные Пользователя никогда, ни при каких условиях не будут переданы третьим лицам, за исключением случаев, связанных с исполнением действующего законодательства либо в случае, если субъектом персональных данных дано согласие Оператору на передачу данных третьему лицу для исполнения обязательств по гражданско-правовому договору.</p><p>8.3. В случае выявления неточностей в персональных данных, Пользователь может актуализировать их самостоятельно, путем направления Оператору уведомление на адрес электронной почты Оператора  с пометкой «Актуализация персональных данных».</p><p>8.4. Срок обработки персональных данных определяется достижением целей, для которых были собраны персональные данные, если иной срок не предусмотрен договором или действующим законодательством.</p><p>Пользователь может в любой момент отозвать свое согласие на обработку персональных данных, направив Оператору уведомление посредством электронной почты на электронный адрес Оператора  с пометкой «Отзыв согласия на обработку персональных данных».</p><p>8.5. Вся информация, которая собирается сторонними сервисами, в том числе платежными системами, средствами связи и другими поставщиками услуг, хранится и обрабатывается указанными лицами (Операторами) в соответствии с их Пользовательским соглашением и Политикой конфиденциальности. Субъект персональных данных и/или с указанными документами. Оператор не несет ответственность за действия третьих лиц, в том числе указанных в настоящем пункте поставщиков услуг.</p><p>8.6. Установленные субъектом персональных данных запреты на передачу (кроме предоставления доступа), а также на обработку или условия обработки (кроме получения доступа) персональных данных, разрешенных для распространения, не действуют в случаях обработки персональных данных в государственных, общественных и иных публичных интересах, определенных законодательством РФ.</p><p>8.7. Оператор при обработке персональных данных обеспечивает конфиденциальность персональных данных.</p><p>8.8. Оператор осуществляет хранение персональных данных в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки персональных данных, если срок хранения персональных данных не установлен федеральным законом, договором, стороной которого, выгодоприобретателем или поручителем по которому является субъект персональных данных.</p><p>8.9. Условием прекращения обработки персональных данных может являться достижение целей обработки персональных данных, истечение срока действия согласия субъекта персональных данных, отзыв согласия субъектом персональных данных или требование о прекращении обработки персональных данных, а также выявление неправомерной обработки персональных данных.</p><h3>9. Перечень действий, производимых Оператором с полученными персональными данными</h3><p>9.1. Оператор осуществляет сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление и уничтожение персональных данных.</p><p>9.2. Оператор осуществляет автоматизированную обработку персональных данных с получением и/или передачей полученной информации по информационно-телекоммуникационным сетям или без таковой.</p><h3>10. Конфиденциальность персональных данных</h3><p>Оператор и иные лица, получившие доступ к персональным данным, обязаны не раскрывать третьим лицам и не распространять персональные данные без согласия субъекта персональных данных, если иное не предусмотрено федеральным законом.</p><h3>11. Заключительные положения</h3><p>11.1. Пользователь может получить любые разъяснения по интересующим вопросам, касающимся обработки его персональных данных, обратившись к Оператору с помощью электронной почты </p><p>11.2. В данном документе будут отражены любые изменения политики обработки персональных данных Оператором. Политика действует бессрочно до замены ее новой версией.</p><p>11.3. Актуальная версия Политики в свободном доступе расположена в сети Интернет по адресу www.lenashya.ru/personal</p></div>
+</div>
+
+</main>
+
+<footer class="ftr">
+  <div class="ftr-giant"><img src="assets/img/logo-white.svg" alt="" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="ftr-cols">
+      <div class="ftr-legal">
+        <p>© 2026 LENASHYA | ЛЕНА́ША. Все права защищены. Любое воспроизведение материалов сайта без разрешения владельца воспрещается.</p>
+        <p>* Instagram принадлежит компании Meta Platforms Inc., деятельность которой на территории РФ запрещена.</p>
+      </div>
+      <div>
+        <div class="ftr-cap">Разделы</div>
+        <a href="#/" data-scroll="#top">Главная</a>
+        <a href="#/portfolio">Портфолио</a>
+        <a href="#/coop">Сотрудничество</a>
+      </div>
+      <div>
+        <div class="ftr-cap">Контакты</div>
+        <a href="https://t.me/lenashya" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.ru/lenashya" target="_blank" rel="noopener">ВКонтакте</a>
+        <a href="https://ru.pinterest.com/lenashya/" target="_blank" rel="noopener">Pinterest</a>
+        <a href="https://instagram.com/lenashya" target="_blank" rel="noopener">Instagram*</a>
+      </div>
+      <div class="ftr-req">
+        <div class="ftr-cap">Реквизиты</div>
+        ИП Мыльникова Елена Анатольевна<br>
+        ИНН 732791691222<br>
+        ОГРНИП 326730000020884
+        <a class="ftr-pol" href="#/personal">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Полноэкранная галерея -->
+<div class="glb" id="glb" role="dialog" aria-modal="true" aria-label="Просмотр работы" aria-hidden="true">
+  <div class="glb-count" id="glb-count"></div>
+  <button class="glb-x" id="glb-x" aria-label="Закрыть">×</button>
+  <button class="glb-nav glb-prev" id="glb-prev" aria-label="Назад">‹</button>
+  <button class="glb-nav glb-next" id="glb-next" aria-label="Вперёд">›</button>
+  <div class="glb-stage" id="glb-stage"><img id="glb-img" src="" alt="" draggable="false"></div>
+  <div class="glb-cap">
+    <span class="glb-cat" id="glb-cat"></span>
+    <span class="glb-title" id="glb-title"></span>
+    <p class="glb-text" id="glb-text"></p>
+  </div>
+</div>
+
+<!-- Cookie -->
+<div class="ck off" id="ck" role="dialog" aria-label="Использование cookie">
+  <div class="ckc">🍪</div>
+  <div class="ckt">
+    <b>Немного печенек к чаю?</b>
+    <span>Сайт использует cookie, чтобы всё работало как надо. Подробнее в <a href="#/personal">Политике конфиденциальности</a>.</span>
+  </div>
+  <div class="ckb">
+    <button class="p" id="ck-yes">Принять</button>
+    <button class="o" id="ck-no">Отклонить</button>
+  </div>
+</div>
+
+<script src="assets/data.js"></script>
+<script>
+  document.documentElement.classList.add('js');
+(function(){
+  var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function declYears(n){var a=n%10,b=n%100;return(a===1&&b!==11)?'год':(a>=2&&a<=4&&(b<12||b>14))?'года':'лет'}
+
+  /* --- данные сайта: assets/data.js, в режиме ?preview=1 — из редактора --- */
+  var DATA=window.SITE||{projects:[],services:[],clients:[],soon:''};
+  if(/[?&]preview=1/.test(location.search)){
+    try{var s=localStorage.getItem('lnh_site_v1');if(s)DATA=JSON.parse(s)}catch(e){}
+  }
+
+  /* ================= РОУТЕР ================= */
+  var PAGES=['home','portfolio','project','coop','personal'];
+  var TITLES={
+    home:'lenashya — бренд-дизайнер Лена Мыльникова',
+    portfolio:'Портфолио — lenashya',
+    project:'Проект — lenashya',
+    coop:'Сотрудничество — lenashya',
+    personal:'Политика конфиденциальности — lenashya'
+  };
+  var page='home', pendingScroll=null;
+
+  function parseHash(){
+    var h=location.hash.replace(/^#\/?/,'');
+    var parts=h.split('/');
+    var p=PAGES.indexOf(parts[0])>=0?parts[0]:'home';
+    if(parts[0]==='about'||parts[0]==='services'||parts[0]==='clients')p='coop'; /* старые ссылки ведут на «Сотрудничество» */
+    return {page:p, arg:parts[1]||''};
+  }
+  function route(){
+    var r=parseHash();
+    page=r.page;
+    document.body.setAttribute('data-page',page);
+    PAGES.forEach(function(p){var n=$('#pg-'+p);if(n)n.classList.toggle('on',p===page)});
+    /* активный пункт меню */
+    $$('.hd-nav a').forEach(function(a){
+      a.classList.toggle('act',a.getAttribute('data-nav')===page);
+    });
+    if(page==='portfolio')drawPortfolio();
+    if(page==='project')drawProject(+r.arg);
+    if(page==='coop'){
+      drawServices();
+      if(DATA.about){
+        if(DATA.about.photo){var abi=$('#ab-img');if(abi)abi.src=DATA.about.photo}
+        var ex=String(DATA.about.exp||'4+'),yw=declYears(parseInt(ex,10)||0);
+        var re=$('#reg-exp');if(re)re.textContent=ex+' '+yw+' в дизайне';
+        var ae=$('#ab-exp');if(ae)ae.textContent=ex;
+        var aw=$('#ab-expw');if(aw)aw.textContent=yw+' в дизайне';
+      }
+    }
+    document.title=TITLES[page]||TITLES.home;
+    if(pendingScroll){
+      var t=$(pendingScroll);pendingScroll=null;
+      if(t){setTimeout(function(){t.scrollIntoView({behavior:'auto',block:'start'})},30)}
+      else{window.scrollTo(0,0)}
+    }else{
+      window.scrollTo(0,0);
+    }
+    ioRefresh();
+    hdUpd();
+    closeMenu();
+  }
+  addEventListener('hashchange',route);
+
+  /* ссылки с data-scroll: на своей странице — плавный скролл, с чужой — переход + скролл */
+  $$('[data-scroll]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var sel=a.getAttribute('data-scroll');
+      var href=a.getAttribute('href')||'';
+      var tp=href.replace(/^#\/?/,'').split('/')[0]||'home';
+      if(tp==='about'||tp==='services'||tp==='clients')tp='coop';
+      if(tp===page){
+        var t=$(sel);
+        if(t){e.preventDefault();closeMenu();t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
+      }else{
+        pendingScroll=sel; /* хэш сменится сам, роутер доскроллит */
+      }
+    });
+  });
+
+  /* --- мобильная шапка: прозрачная поверх фото на главной, стеклянная при скролле --- */
+  var hd=$('.hd'),mqMob=matchMedia('(max-width:900px)');
+  function hdUpd(){
+    if(!mqMob.matches||page!=='home'){hd.classList.remove('hd-solid');return}
+    var hph=$('.hero-ph');
+    var hb=hd.getBoundingClientRect().bottom,pb=hph?hph.getBoundingClientRect().bottom:0;
+    hd.classList.toggle('hd-solid',pb<hb+8);
+  }
+  addEventListener('scroll',hdUpd,{passive:true});
+  addEventListener('resize',hdUpd);
+
+  /* --- мобильное меню --- */
+  var mnav=$('#mnav');
+  function closeMenu(){mnav.classList.remove('on');mnav.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+  $('#burger').addEventListener('click',function(){mnav.classList.add('on');mnav.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'});
+  $('#mnav-x').addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeMenu();glbClose()}});
+
+  /* ================= ГЛАВНАЯ: карусель избранного ================= */
+  function figCard(i){
+    var w=DATA.projects[i];
+    return '<a class="wcard" href="#/project/'+i+'">'
+      +'<div class="wcard-cov"><img src="'+esc(w.th)+'" alt="'+esc(w.t)+'" loading="lazy" draggable="false"></div>'
+      +'<div class="wcard-info"><div><div class="wcard-name">'+esc(w.t)+'</div>'
+      +'<div class="wcard-tag">'+esc(w.c)+(w.ty?' · '+esc(w.ty):'')+'</div></div>'
+      +'<span class="wcard-arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>'
+      +'</div></a>';
+  }
+  function drawHome(){
+    var f=[];DATA.projects.forEach(function(w,i){if(w.f)f.push(i)});
+    if(!f.length)f=DATA.projects.map(function(w,i){return i}).slice(0,4);
+    $('#track').innerHTML=f.map(figCard).join('');
+    carUpd();
+  }
+
+  /* --- карусель проектов --- */
+  var track=$('#track'),prevB=$('#car-prev'),nextB=$('#car-next');
+  function step(){var c=track.querySelector('.wcard');return c?c.getBoundingClientRect().width+34:400}
+  function carUpd(){
+    var max=track.scrollWidth-track.clientWidth-4;
+    prevB.disabled=track.scrollLeft<=4;
+    nextB.disabled=track.scrollLeft>=max;
+  }
+  prevB.addEventListener('click',function(){track.scrollBy({left:-step(),behavior:'smooth'})});
+  nextB.addEventListener('click',function(){track.scrollBy({left:step(),behavior:'smooth'})});
+  track.addEventListener('scroll',carUpd,{passive:true});
+  window.addEventListener('resize',carUpd);
+
+  /* ================= ПОРТФОЛИО ================= */
+  var curCat='Избранные';
+  function drawPortfolio(){
+    /* последний релиз — первый избранный проект */
+    var fi=-1;DATA.projects.forEach(function(w,i){if(fi<0&&w.f)fi=i});
+    if(fi<0)fi=0;
+    var L=DATA.projects[fi];
+    if(L){
+      $('#rlz').setAttribute('href','#/project/'+fi);
+      $('#rlz').innerHTML='<span class="rlz-img"><img src="'+esc(L.th)+'" alt="'+esc(L.t)+'" draggable="false"></span>'
+        +'<span class="rlz-t"><span class="k">Последний релиз</span><h2>'+esc(L.t)+'</h2>'
+        +'<p>'+esc((L.d||'').split('\n')[0])+'</p>'
+        +'<span class="btn btn-red">Смотреть проект</span></span>';
+    }
+    /* категории */
+    var cats=['Избранные','Все'],cnt={};
+    DATA.projects.forEach(function(w){cnt[w.c]=(cnt[w.c]||0)+1;if(cats.indexOf(w.c)<0)cats.push(w.c)});
+    if(cats.indexOf(curCat)<0)curCat='Избранные';
+    $('#chips').innerHTML=cats.map(function(c){
+      var n=c==='Избранные'?DATA.projects.filter(function(w){return w.f}).length:(c==='Все'?DATA.projects.length:cnt[c]);
+      return '<button class="chip'+(c===curCat?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+' <sup>'+n+'</sup></button>';
+    }).join('');
+    $$('#chips .chip').forEach(function(b){
+      b.addEventListener('click',function(){curCat=b.getAttribute('data-c');drawPortfolio();ioRefresh()});
+    });
+    /* карточки */
+    var shown=DATA.projects.map(function(w,i){return i}).filter(function(i){
+      var w=DATA.projects[i];
+      return curCat==='Все'||(curCat==='Избранные'?w.f:w.c===curCat);
+    });
+    $('#pf-empty').style.display=shown.length?'none':'';
+    $('#pf-grid').innerHTML=shown.map(function(i){
+      var w=DATA.projects[i],n=(w.g||[]).length;
+      return '<a class="pf-card" href="#/project/'+i+'" data-i="'+i+'">'
+        +'<span class="pf-cov">'+(w.f?'<span class="pf-star">Избранный проект</span>':'')
+        +'<img src="'+esc(w.th)+'" alt="'+esc(w.t)+'" loading="lazy" draggable="false"></span>'
+        +'<span class="pf-info"><span><span class="pf-name">'+esc(w.t)+'</span>'
+        +'<span class="pf-tag" style="display:block">'+esc(w.c)+(n?' · '+n+' фото':'')+'</span></span>'
+        +'<span class="pf-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>'
+        +'</span></a>';
+    }).join('');
+    /* избранные → страница проекта; остальные → галерея с подписями */
+    $$('#pf-grid .pf-card').forEach(function(a){
+      a.addEventListener('click',function(e){
+        var i=+a.getAttribute('data-i'),w=DATA.projects[i];
+        if(!w.f){
+          e.preventDefault();
+          glbOpen((w.g||[]).map(function(g){return{src:g.src,cap:g.cap||'',cat:w.c,title:w.t}}),0);
+        }
+      });
+    });
+  }
+
+  /* ================= СТРАНИЦА ПРОЕКТА ================= */
+  function drawProject(i){
+    var w=DATA.projects[i];
+    if(!w){location.hash='#/portfolio';return}
+    document.title=w.t+' — lenashya';
+    var pills='<span class="pl">'+esc(w.c)+'</span>'+(w.ty?'<span class="pl">'+esc(w.ty)+'</span>':'');
+    var g=(w.g||[]).map(function(item){
+      return '<figure class="rv"><img src="'+esc(item.src)+'" alt="'+esc(w.t)+'" loading="lazy" draggable="false"></figure>';
+    }).join('');
+    var pI=(i-1+DATA.projects.length)%DATA.projects.length,nI=(i+1)%DATA.projects.length;
+    $('#pj').innerHTML=
+      '<a class="pj-back" href="#/portfolio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 5l7 7-7 7"/></svg>Все работы</a>'
+      +'<h1 class="pj-h">'+esc(w.t)+'</h1>'
+      +'<div class="pj-pills">'+pills+'</div>'
+      +(w.d?'<p class="pj-d">'+esc(w.d)+'</p>':'')
+      +'<div class="pj-g">'+g+'</div>'
+      +'<div class="pj-nav">'
+      +'<a class="pj-nl" href="#/project/'+pI+'"><small>Предыдущий проект</small><b>'+esc(DATA.projects[pI].t)+'</b></a>'
+      +'<a class="pj-nl next" href="#/project/'+nI+'"><small>Следующий проект</small><b>'+esc(DATA.projects[nI].t)+'</b></a>'
+      +'</div>';
+  }
+
+  /* ================= УСЛУГИ ================= */
+  function drawServices(){
+    $('#sv-grid').innerHTML=DATA.services.map(function(b,bi){
+      var rows=b.rows.map(function(r){
+        return '<li><span class="sv-nm">'+esc(r.name)+(r.note?'<small>'+esc(r.note)+'</small>':'')+'</span><i class="sv-ld"></i><b class="sv-pr">'+esc(r.price)+'</b></li>';
+      }).join('');
+      return '<div class="sv-card rv"><span class="sv-num">0'+(bi+1)+'</span><h3>'+esc(b.title)+'</h3><ul>'+rows+'</ul></div>';
+    }).join('');
+    $('#sv-soon').textContent=DATA.soon||'';
+  }
+
+  /* --- бегущая строка «Мне доверяют» --- */
+  function drawClients(){
+    var items=DATA.clients.map(function(c){return '<b>'+esc(c)+'</b><i>✦</i>'}).join('');
+    $('#mqt').innerHTML=items+items; /* дубль для бесшовной ленты */
+  }
+
+  /* ================= ПОЛНОЭКРАННАЯ ГАЛЕРЕЯ ================= */
+  var glb=$('#glb'),gImg=$('#glb-img'),gList=[],gK=0;
+  function glbShow(k){
+    if(!gList.length)return;
+    gK=(k+gList.length)%gList.length;
+    glb.classList.remove('z');
+    gImg.src=gList[gK].src;
+    gImg.alt=gList[gK].title||'';
+    $('#glb-count').textContent=(gK+1)+' / '+gList.length;
+    $('#glb-cat').textContent=gList[gK].cat||'';
+    $('#glb-title').textContent=gList[gK].title||'';
+    var t=$('#glb-text');t.textContent=gList[gK].cap||'';t.style.display=gList[gK].cap?'':'none';
+    var multi=gList.length>1;
+    $('#glb-prev').style.display=multi?'':'none';
+    $('#glb-next').style.display=multi?'':'none';
+  }
+  function glbOpen(list,k){
+    gList=list||[];
+    glb.classList.add('on');glb.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    glbShow(k||0);
+  }
+  function glbClose(){
+    if(!glb.classList.contains('on'))return;
+    glb.classList.remove('on');glb.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+  $('#glb-x').addEventListener('click',glbClose);
+  $('#glb-prev').addEventListener('click',function(){glbShow(gK-1)});
+  $('#glb-next').addEventListener('click',function(){glbShow(gK+1)});
+  glb.addEventListener('click',function(e){if(e.target===glb)glbClose()});
+  document.addEventListener('keydown',function(e){
+    if(!glb.classList.contains('on'))return;
+    if(e.key==='ArrowRight')glbShow(gK+1);
+    if(e.key==='ArrowLeft')glbShow(gK-1);
+  });
+  /* зум по клику */
+  gImg.addEventListener('click',function(e){
+    var z=glb.classList.toggle('z');
+    if(z){
+      var st=$('#glb-stage');
+      setTimeout(function(){
+        st.scrollLeft=(e.clientX/innerWidth)*st.scrollWidth-st.clientWidth/2;
+        st.scrollTop=(e.clientY/innerHeight)*st.scrollHeight-st.clientHeight/2;
+      },40);
+    }
+  });
+  /* свайп на мобильных */
+  var sx=0;
+  glb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  glb.addEventListener('touchend',function(e){
+    if(glb.classList.contains('z'))return;
+    var d=e.changedTouches[0].clientX-sx;
+    if(Math.abs(d)>60&&gList.length>1)glbShow(gK+(d<0?1:-1));
+  },{passive:true});
+
+  /* ================= ЭТАПЫ РАБОТЫ: авто-анимация таймлайна ================= */
+  (function(){
+    var tl=$('#tl');if(!tl)return;
+    var it=$$('.ti',tl)||Array.prototype.slice.call(tl.querySelectorAll('.ti')),f=$('#tlf'),cur=0,hov=false,vis=false;
+    function set(i){
+      cur=i;
+      it.forEach(function(x,k){x.classList.toggle('on',k===i);x.classList.toggle('done',k<i)});
+      f.style.setProperty('--p',(i/(it.length-1))*100+'%');
+    }
+    it.forEach(function(x,i){
+      x.addEventListener('mouseenter',function(){hov=true;set(i)});
+      x.addEventListener('mouseleave',function(){hov=false});
+      x.addEventListener('click',function(){set(i)});
+    });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){vis=e[0].isIntersecting},{threshold:.3}).observe(tl);
+    }else{vis=true}
+    setInterval(function(){if(vis&&!hov&&!document.hidden&&page==='coop')set((cur+1)%it.length)},2300);
+    set(0);
+  })();
+
+  /* ================= COOKIE ================= */
+  (function(){
+    var ck=$('#ck');
+    try{if(localStorage.getItem('lnh_ck'))return}catch(e){}
+    ck.classList.remove('off');
+    function done(v){try{localStorage.setItem('lnh_ck',v)}catch(e){}ck.classList.add('off')}
+    $('#ck-yes').addEventListener('click',function(){done('1')});
+    $('#ck-no').addEventListener('click',function(){done('0')});
+  })();
+
+  /* ================= ЗАЩИТА ОТ КОПИРОВАНИЯ ================= */
+  (function(){
+    document.addEventListener('contextmenu',function(e){e.preventDefault()});
+    document.addEventListener('selectstart',function(e){e.preventDefault()});
+    document.addEventListener('copy',function(e){e.preventDefault()});
+    document.addEventListener('cut',function(e){e.preventDefault()});
+    document.addEventListener('dragstart',function(e){e.preventDefault()});
+    document.addEventListener('keydown',function(e){
+      var k=(e.key||'').toLowerCase();
+      if((e.ctrlKey||e.metaKey)&&['s','u','c','x','p'].indexOf(k)>=0){e.preventDefault()}
+      if(e.key==='F12'){e.preventDefault()}
+    });
+  })();
+
+  /* --- появление блоков --- */
+  var io=null;
+  function ioRefresh(){
+    if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){
+      $$('.rv').forEach(function(n){n.classList.add('in')});return;
+    }
+    if(!io){
+      io=new IntersectionObserver(function(es){
+        es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})
+      },{threshold:.1});
+    }
+    $$('.pg.on .rv').forEach(function(n){if(!n.classList.contains('in'))io.observe(n)});
+  }
+
+  /* --- снег --- */
+  (function(){
+    var c=document.getElementById('snow');if(!c)return;
+    var x=c.getContext('2d'),W,H,F=[];
+    var rd=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function mk(t){return{x:Math.random()*W,y:t?-12:Math.random()*H,r:Math.random()*2.6+.8,v:Math.random()*.7+.35,a:Math.random()*6.28,s:Math.random()*.014+.004,o:Math.random()*.4+.55,bl:Math.random()<.5}}
+    function rs(){W=innerWidth;H=innerHeight;c.width=W;c.height=H;var n=Math.round(Math.min(W<700?45:90,W/9));while(F.length<n)F.push(mk(false));F.length=n}
+    rs();addEventListener('resize',rs);
+    function dr(){
+      x.clearRect(0,0,W,H);
+      F.forEach(function(f,i){
+        if(!rd){f.y+=f.v;f.a+=f.s;f.x+=Math.sin(f.a)*.45;if(f.y>H+12)F[i]=f=mk(true);if(f.x<-10)f.x=W+10;if(f.x>W+10)f.x=-10}
+        x.beginPath();
+        x.fillStyle=f.bl?'rgba(158,186,222,'+f.o+')':'rgba(255,255,255,'+f.o+')';
+        x.arc(f.x,f.y,f.r,0,6.283);x.fill();
+      });
+      if(!rd)requestAnimationFrame(dr);
+    }
+    document.addEventListener('visibilitychange',function(){if(!document.hidden&&!rd)requestAnimationFrame(dr)});
+    dr();
+  })();
+
+  /* --- старт --- */
+  drawHome();
+  drawClients();
+  route();
+  hdUpd();
+})();
+</script>
+</body>
+</html>
