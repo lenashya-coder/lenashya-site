@@ -152,6 +152,10 @@ em{font-style:normal}
   letter-spacing:.015em;
 }
 .hero-h1 .scr{font-family:var(--script);font-size:.95em;line-height:1;padding-left:.04em}
+/* обёртка «большой логотип + заголовок» поверх фото (мобильный хиро);
+   на десктопе обёртка прозрачна для вёрстки, большой логотип не нужен */
+.hero-brand{display:contents}
+.hero-brand .hero-biglogo{display:none}
 .hero-btns{margin-top:44px;display:flex;gap:18px;flex-wrap:wrap}
 /* прелоадер + интро-размытие хиро */
 #preloader{
@@ -165,8 +169,6 @@ em{font-style:normal}
 #preloader .pl-bar i{display:block;height:100%;width:40%;border-radius:2px;background:rgba(255,255,255,.9);animation:plSlide 1.1s ease-in-out infinite}
 @keyframes plPulse{0%,100%{opacity:.55;transform:scale(.97)}50%{opacity:1;transform:scale(1)}}
 @keyframes plSlide{0%{transform:translateX(-130%)}100%{transform:translateX(340%)}}
-.hero-ph img{transition:filter .12s linear}
-body.hero-anim .hero-txt,body.hero-anim .hero-swipe{opacity:0;transition:opacity .25s linear}
 @media (prefers-reduced-motion:reduce){
   #preloader img,#preloader .pl-bar i{animation:none}
 }
@@ -735,6 +737,9 @@ body.hero-anim .hero-txt,body.hero-anim .hero-swipe{opacity:0;transition:opacity
   .hd-logo .lg-dark{display:none}
   .hd-logo .lg-light{display:block}
   .hd-burger{color:#fff}
+  /* на главной поверх фото большой логотип — маленький в шапке не нужен,
+     появится вместе со «стеклянной» шапкой при прокрутке */
+  body[data-page="home"] .hd:not(.hd-solid) .hd-logo{display:none}
   .hd.hd-solid .hd-pill{
     background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.7);
     box-shadow:0 8px 28px rgba(95,13,27,.08);
@@ -755,10 +760,17 @@ body.hero-anim .hero-txt,body.hero-anim .hero-swipe{opacity:0;transition:opacity
   body[data-page]:not([data-page="home"]) main{padding-top:72px}
 
   .hero{grid-template-columns:minmax(0,1fr);min-height:0;margin-top:0;border-radius:0;overflow:visible;position:relative}
-  /* заголовок — поверх фото вверху; стеклянный блок с пилюлей и кнопками — внизу, под кроликом */
+  /* большой логотип поверх фото, заголовок растянут ровно по его границам */
+  .hero-txt .hero-brand{
+    position:absolute;top:88px;left:28px;z-index:3;
+    width:min(420px,calc(100% - 56px));
+    display:flex;flex-direction:column;align-items:stretch;
+  }
+  .hero-txt .hero-brand .hero-biglogo{display:block;width:100%;height:auto}
   .hero-txt .hero-h1{
-    position:absolute;top:64px;left:28px;right:28px;margin:0;z-index:3;
-    font-size:clamp(26px,7vw,34px);color:#fff;white-space:nowrap;
+    position:static;margin:16px 0 0;width:100%;
+    font-size:clamp(22px,6.2vw,30px);color:#fff;white-space:nowrap;
+    text-align:justify;text-align-last:justify;
     text-shadow:0 2px 16px rgba(10,6,8,.55),0 0 3px rgba(10,6,8,.35);
   }
   .hero-txt .hero-h1 .h1-more{display:none}
@@ -810,7 +822,7 @@ body.hero-anim .hero-txt,body.hero-anim .hero-swipe{opacity:0;transition:opacity
 @media (max-width:380px){
   .hero-txt{padding-left:20px;padding-right:20px}
   .hero-pill{font-size:10px;padding:8px 12px;letter-spacing:-.02em}
-  .hero-txt .hero-h1{font-size:clamp(21px,6.4vw,34px)}
+  .hero-txt .hero-h1{font-size:clamp(19px,6vw,30px)}
 }
 @media (max-width:560px){
   .works-head{flex-direction:column;align-items:flex-start}
@@ -879,7 +891,10 @@ body.hero-anim .hero-txt,body.hero-anim .hero-swipe{opacity:0;transition:opacity
     <div class="hero rv">
       <div class="hero-txt">
         <div class="hero-logo"><img src="assets/img/logo-white.svg" alt="lenashya"></div>
-        <h1 class="hero-h1">Графический дизайнер<span class="h1-more"><br>бренд-дизайнер<br><em class="scr">lenashya</em></span></h1>
+        <div class="hero-brand">
+          <img class="hero-biglogo" src="assets/img/logo-white.svg" alt="lenashya">
+          <h1 class="hero-h1">Графический дизайнер<span class="h1-more"><br>бренд-дизайнер<br><em class="scr">lenashya</em></span></h1>
+        </div>
         <span class="hero-pill">специализация: Beauty Industry / Индустрия красоты</span>
         <div class="hero-btns">
           <a class="btn btn-blue" href="#/portfolio">Смотреть портфолио</a>
@@ -1493,37 +1508,13 @@ body.hero-anim .hero-txt,body.hero-anim .hero-swipe{opacity:0;transition:opacity
     addEventListener('scroll',function(){hsw.classList.toggle('off',scrollY>50)},{passive:true});
   })();
 
-  /* прелоадер + интро: размытое фото без надписей, проявление по прокрутке */
+  /* прелоадер: скрываем после загрузки */
   (function(){
     var pl=document.getElementById('preloader');
     var done=false;
     function finish(){if(done||!pl)return;done=true;pl.classList.add('done');setTimeout(function(){pl.style.display='none'},700)}
     addEventListener('load',function(){setTimeout(finish,900)});
     setTimeout(finish,3500);
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    if(document.body.getAttribute('data-page')!=='home')return;
-    var img=document.querySelector('.hero-ph img');if(!img)return;
-    var card=$('.hero-txt'),sw=$('#hero-swipe');
-    document.body.classList.add('hero-anim');
-    var revealed=false,ticking=false;
-    function apply(){
-      ticking=false;
-      if(revealed)return;
-      var p=Math.min(1,scrollY/90);
-      img.style.filter='blur('+(16*(1-p)).toFixed(2)+'px) brightness('+(0.85+0.15*p).toFixed(3)+')';
-      var o=Math.min(1,p/0.55).toFixed(3);
-      if(card)card.style.opacity=o;
-      if(sw)sw.style.opacity=o;
-      if(p>=1){
-        revealed=true;
-        img.style.filter='';
-        if(card)card.style.opacity='';
-        if(sw)sw.style.opacity='';
-        document.body.classList.remove('hero-anim');
-      }
-    }
-    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(apply)}},{passive:true});
-    apply();
   })();
 
   /* ================= COOKIE ================= */
