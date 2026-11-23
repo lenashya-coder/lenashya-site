@@ -903,8 +903,8 @@ em{font-style:normal}
       </div>
       <div class="hero-ph">
         <picture>
-          <source media="(max-width:900px)" srcset="assets/img/hero-mob.jpg">
-          <img src="assets/img/hero.jpg" alt="Лена Мыльникова за рабочим столом, на диване спит заяц Люсьен" fetchpriority="high">
+          <source id="hero-src-m" media="(max-width:900px)" srcset="assets/img/hero-mob.jpg">
+          <img id="hero-img" src="assets/img/hero.jpg" alt="Лена Мыльникова за рабочим столом, на диване спит заяц Люсьен" fetchpriority="high">
         </picture>
         <div class="hero-swipe" id="hero-swipe" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l6-6 6 6M6 19l6-6 6 6"/></svg></div>
       </div>
@@ -1174,6 +1174,15 @@ em{font-style:normal}
   var DATA=window.SITE||{projects:[],services:[],clients:[],soon:''};
   if(/[?&]preview=1/.test(location.search)){
     try{var s=localStorage.getItem('lnh_site_v1');if(s)DATA=JSON.parse(s)}catch(e){}
+  }
+
+  /* --- фото на первом экране: из редактора (DATA.hero) или штатное --- */
+  function drawHero(){
+    var h=DATA.hero||{};
+    var im=$('#hero-img'),so=$('#hero-src-m');
+    if(!im)return;
+    if(h.d){im.src=h.d;if(h.alt)im.alt=h.alt}
+    if(so){so.srcset=h.m||(h.d||'assets/img/hero-mob.jpg')}
   }
 
   /* --- редактируемые блоки: CTA на главной и этапы работы --- */
@@ -1579,6 +1588,7 @@ em{font-style:normal}
   })();
 
   /* --- старт --- */
+  drawHero();
   drawHome();
   drawClients();
   route();
