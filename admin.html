@@ -131,6 +131,17 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-tra
   <!-- ГЛАВНАЯ И ЭТАПЫ -->
   <div class="pane" id="pane-hm" style="display:none">
     <div class="form">
+      <h3>Фото на первом экране</h3>
+      <p class="hint" style="margin-top:8px">Главное фото сайта — то, что видно сразу при открытии. Загружайте исходник в высоком качестве: редактор сам подготовит оптимальный файл, качество сохранится.</p>
+      <label style="margin-top:16px">Компьютер — широкое горизонтальное фото</label>
+      <div class="cov"><img id="hr-d" src="" alt=""><button class="btn btn-lt btn-sm" id="hr-db">Загрузить фото</button></div>
+      <label style="margin-top:18px">Телефон — вертикальное фото (полный экран)</label>
+      <div class="cov"><img id="hr-m" src="" alt=""><button class="btn btn-lt btn-sm" id="hr-mb">Загрузить фото</button></div>
+      <label style="margin-top:18px">Подпись к фото (для поисковиков, необязательно)</label>
+      <input id="hr-alt" placeholder="Лена Мыльникова за рабочим столом">
+      <div class="fact"><button class="btn btn-lt" id="hr-rst">Вернуть фото по умолчанию</button></div>
+    </div>
+    <div class="form">
       <h3>Блок «Начнём проект?» на главной</h3>
       <label style="margin-top:16px">Надзаголовок</label>
       <input id="ctaeb" placeholder="Начнём проект?">
@@ -228,7 +239,7 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-tra
       {t:'Доработка',d:'Вносим правки и доводим до результата'},
       {t:'Готово',d:'Файлы для печати и соцсетей'}
     ];
-    DATA.cta=DATA.cta||{};
+    DATA.cta=DATA.cta||{};DATA.hero=DATA.hero||{};
     if(DATA.cta.eb==null)DATA.cta.eb='Начнём проект?';
     if(DATA.cta.title==null)DATA.cta.title='Сделаем ваш бренд *желанным* в 2027 году?';
     if(DATA.cta.sub==null)DATA.cta.sub='Новый бренд или обновление уже существующего: бронируйте дату старта дизайн-проекта сейчас!';
@@ -258,7 +269,7 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-tra
   });
 
   /* ---------- сжатие изображений ---------- */
-  function squeeze(file,cb){
+  function squeeze(file,cb,q){
     var rd=new FileReader();
     rd.onload=function(){
       var im=new Image();
@@ -267,12 +278,14 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-tra
         if(w>M||h>M){var k=M/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k)}
         var cv=document.createElement('canvas');cv.width=w;cv.height=h;
         cv.getContext('2d').drawImage(im,0,0,w,h);
-        cb(cv.toDataURL('image/jpeg',.85));
+        cb(cv.toDataURL('image/jpeg',q||.85));
       };
       im.src=rd.result;
     };
     rd.readAsDataURL(file);
   }
+  /* главный экран — максимальное качество */
+  function squeezeHQ(file,cb){squeeze(file,cb,.93)}
 
   /* ================= ПРОЕКТЫ ================= */
   var editI=-1;
@@ -368,14 +381,14 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-tra
   function drawListKeep(){var y=scrollY;drawList();scrollTo(0,y)}
   function closeForm(){editI=-1;$('#pform').style.display='none'}
 
-  var pickCb=null,pickFilesCb=null;
-  function pick(multi,one,many){
+  var pickCb=null,pickFilesCb=null,pickHQf=false;
+  function pick(multi,one,many,hq){
     var inp=multi?$('#fum'):$('#fu');
-    pickCb=one;pickFilesCb=many;
+    pickCb=one;pickFilesCb=many;pickHQf=!!hq;
     inp.value='';inp.click();
   }
   $('#fu').addEventListener('change',function(){
-    if(this.files[0]&&pickCb)squeeze(this.files[0],pickCb);
+    if(this.files[0]&&pickCb)(pickHQf?squeezeHQ:squeeze)(this.files[0],pickCb);
   });
   $('#fum').addEventListener('change',function(){
     if(this.files.length&&pickFilesCb)pickFilesCb(Array.prototype.slice.call(this.files));
@@ -441,6 +454,9 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-tra
 
   /* ================= ГЛАВНАЯ И ЭТАПЫ ================= */
   function drawHm(){
+    $('#hr-d').src=DATA.hero.d||'assets/img/hero.jpg';
+    $('#hr-m').src=DATA.hero.m||'assets/img/hero-mob.jpg';
+    $('#hr-alt').value=DATA.hero.alt||'';
     $('#ctaeb').value=DATA.cta.eb||'';
     $('#ctat').value=DATA.cta.title||'';
     $('#ctas').value=DATA.cta.sub||'';
@@ -466,6 +482,17 @@ label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-tra
     });
   }
   $('#addst').addEventListener('click',function(){DATA.steps.push({t:'Новый этап',d:''});save(true);drawHm()});
+  $('#hr-db').addEventListener('click',function(){
+    pick(false,function(src){DATA.hero.d=src;drawHm();save()},null,true);
+  });
+  $('#hr-mb').addEventListener('click',function(){
+    pick(false,function(src){DATA.hero.m=src;drawHm();save()},null,true);
+  });
+  $('#hr-alt').addEventListener('input',function(){DATA.hero.alt=this.value.trim();save(true)});
+  $('#hr-rst').addEventListener('click',function(){
+    if(!confirm('Вернуть для первого экрана фото по умолчанию?'))return;
+    DATA.hero={};drawHm();save();
+  });
   $('#ctaeb').addEventListener('input',function(){DATA.cta.eb=this.value;save(true)});
   $('#ctat').addEventListener('input',function(){DATA.cta.title=this.value;save(true)});
   $('#ctas').addEventListener('input',function(){DATA.cta.sub=this.value;save(true)});
